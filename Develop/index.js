@@ -136,6 +136,10 @@ promptUser()
         console.log(userData)
     })
 
+const { github } = userData
+
+console.log({ github })
+
 // // TODO: Create a function to write README file
 // function writeToFile(fileName, data) { }
 

@@ -98,7 +98,11 @@ function generateMarkdown(data) {
   ${test}
 
   ##  Questions
-  ${email} ${github} Please reach me here for further questions. 
+  ${email} 
+  
+  ${github}   is my github username
+  
+  Please reach me here for further questions. 
 `
 }
 

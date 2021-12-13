@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require("./utils/generateMarkdown")
 
 
 // TODO: Create an array of questions for user input
@@ -123,28 +124,16 @@ const promptUser = userData => {
             when: ({ confirmAbout }) => confirmAbout
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'license',
             message: 'What lisence does this project use?',
-            choices: ['MIT', 'MITT', 'MITTT', 'MITTTT', 'none']
+            choices: ['MIT', 'Apache 2.0', 'Eclipse', 'GNU', 'none']
         }
     ]);
 };
 
 promptUser()
     .then(userData => {
-        console.log(userData)
+        const readMeText = generateMarkdown(userData)
+        fs.writeFileSync("./README.md", readMeText)
     })
-
-const { github } = userData
-
-console.log({ github })
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) { }
-
-// // TODO: Create a function to initialize app
-// function init() { }
-
-// // Function call to initialize app
-// init();
